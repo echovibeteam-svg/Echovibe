@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EchoVibe | Underground Music Stream</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <h1 class="logo">EchoVibe</h1>
+      <nav>
+        <a href="#" class="active">🏠 Home</a>
+        <a href="#">🔍 Search</a>
+        <a href="#">📚 Library</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content Stream -->
+    <main class="main-content">
+      <header>
+        <h2>Discover New Vibe</h2>
+      </header>
+      
+      <div class="track-list">
+        <!-- Track Row -->
+        <div class="track-row" onclick="loadTrack('https://soundhelix.com', 'Cyber Dreams', 'SynthWave Collective', 'https://unsplash.com')">
+          <img src="https://unsplash.com" alt="Cover">
+          <div class="track-info">
+            <h3>Cyber Dreams</h3>
+            <p>SynthWave Collective</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Bottom Persistent Audio Player -->
+  <footer class="player-bar">
+    <div class="current-track">
+      <img id="player-art" src="https://unsplash.com" alt="Cover">
+      <div>
+        <h4 id="player-title">Select a track</h4>
+        <p id="player-artist">-</p>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="play-btn" onclick="togglePlay()">▶ Play</button>
+    </div>
+    
+    <audio id="main-audio" src=""></audio>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
