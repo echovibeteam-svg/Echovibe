@@ -3,57 +3,126 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EchoVibe | Underground Music Stream</title>
+  <title>EchoVibe | Underground Music Stream & Community</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="app-container">
-    <!-- Sidebar Navigation -->
-    <aside class="sidebar">
-      <h1 class="logo">EchoVibe</h1>
-      <nav>
-        <a href="#" class="active">🏠 Home</a>
-        <a href="#">🔍 Search</a>
-        <a href="#">📚 Library</a>
-      </nav>
-    </aside>
+  <!-- Top Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-left">
+      <span class="logo">ECHOVIBE</span>
+      <span class="tagline">// underground music collective</span>
+    </div>
+    <nav class="nav-links">
+      <a href="#" class="active">Streams</a>
+      <a href="#">Artists</a>
+      <a href="#">Events</a>
+      <a href="#">About</a>
+    </nav>
+    <div class="nav-right">
+      <button class="login-btn" onclick="openLoginModal()">Sign In</button>
+    </div>
+  </header>
 
-    <!-- Main Content Stream -->
-    <main class="main-content">
-      <header>
-        <h2>Discover New Vibe</h2>
-      </header>
-      
+  <!-- Main Split-Screen Layout -->
+  <div class="split-container">
+    
+    <!-- Left Panel: Graphic & Content -->
+    <section class="left-panel">
+      <div class="hero-overlay">
+        <h1>THE STREAM IS LIVE</h1>
+        <p>A community curated space for cyber, lo-fi, synth, and independent underground audio creators.</p>
+        <div class="badge-row">
+          <span class="badge">GEN Z COLLECTIVE</span>
+          <span class="badge">COMMUNITY DRIVEN</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right Panel: Music Feed -->
+    <section class="right-panel">
+      <div class="section-title">
+        <h2>Current Rotation</h2>
+        <p>Click any track to listen instantly</p>
+      </div>
+
       <div class="track-list">
-        <!-- Track Row -->
-        <div class="track-row" onclick="loadTrack('https://soundhelix.com', 'Cyber Dreams', 'SynthWave Collective', 'https://unsplash.com')">
-          <img src="https://unsplash.com" alt="Cover">
-          <div class="track-info">
+        <!-- Track 1 -->
+        <div class="track-card" onclick="loadTrack('https://soundhelix.com', 'Cyber Dreams', 'SynthWave Collective', 'https://unsplash.com')">
+          <img src="https://unsplash.com" alt="Cyber Dreams">
+          <div class="track-details">
             <h3>Cyber Dreams</h3>
             <p>SynthWave Collective</p>
           </div>
+          <span class="play-icon">▶</span>
+        </div>
+
+        <!-- Track 2 -->
+        <div class="track-card" onclick="loadTrack('https://soundhelix.com', 'Neon Tokyo Walk', 'Harajuku Glitch', 'https://unsplash.com')">
+          <img src="https://unsplash.com" alt="Neon Tokyo">
+          <div class="track-details">
+            <h3>Neon Tokyo Walk</h3>
+            <p>Harajuku Glitch</p>
+          </div>
+          <span class="play-icon">▶</span>
+        </div>
+
+        <!-- Track 3 -->
+        <div class="track-card" onclick="loadTrack('https://soundhelix.com', 'Midnight Coffee', 'Lo-Fi Chillhop Beats', 'https://unsplash.com')">
+          <img src="https://unsplash.com" alt="Midnight Coffee">
+          <div class="track-details">
+            <h3>Midnight Coffee</h3>
+            <p>Lo-Fi Chillhop Beats</p>
+          </div>
+          <span class="play-icon">▶</span>
         </div>
       </div>
-    </main>
+    </section>
+
   </div>
 
-  <!-- Bottom Persistent Audio Player -->
-  <footer class="player-bar">
-    <div class="current-track">
-      <img id="player-art" src="https://unsplash.com" alt="Cover">
+  <!-- Persistent Bottom Media Player -->
+  <footer class="persistent-player">
+    <div class="player-track-info">
+      <img id="current-art" src="https://unsplash.com" alt="Cover Art">
       <div>
-        <h4 id="player-title">Select a track</h4>
-        <p id="player-artist">-</p>
+        <h4 id="current-title">Select a vibe to begin</h4>
+        <p id="current-artist">EchoVibe Collective</p>
       </div>
     </div>
 
-    <div class="controls">
-      <button id="play-btn" onclick="togglePlay()">▶ Play</button>
+    <div class="player-controls">
+      <button class="ctrl-btn" id="play-pause-btn" onclick="togglePlay()">▶ Play</button>
+      <div class="progress-container" onclick="seekAudio(event)">
+        <div class="progress-bar" id="audio-progress"></div>
+      </div>
     </div>
-    
-    <audio id="main-audio" src=""></audio>
+
+    <div class="player-meta">
+      <span class="live-indicator">LIVE STREAM</span>
+    </div>
+
+    <!-- Hidden native audio controller -->
+    <audio id="global-audio-element" src=""></audio>
   </footer>
+
+  <!-- Tweak: Clean Login Modal Popup -->
+  <div class="modal-overlay" id="login-modal">
+    <div class="modal-box">
+      <button class="close-modal" onclick="closeLoginModal()">✕</button>
+      <h2>Join the Collective</h2>
+      <p>Sign in to save tracks, submit music, and chat with creators.</p>
+      <form onsubmit="handleLogin(event)">
+        <input type="email" placeholder="Email Address" required>
+        <input type="password" placeholder="Password" required>
+        <button type="submit" class="submit-login">Sign In</button>
+      </form>
+      <div class="modal-footer">
+        <p>New to EchoVibe? <a href="#">Create an account</a></p>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
